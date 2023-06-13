@@ -1,5 +1,14 @@
-function displayCurrentTime() {
-  let now = new Date();
+function formatDate(date) {
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  let dayIndex = date.getDay();
   let days = [
     "Sunday",
     "Monday",
@@ -9,44 +18,69 @@ function displayCurrentTime() {
     "Friday",
     "Saturday"
   ];
-  let day = days[now.getDay()];
-  let hours = now.getHours();
-  let minutes = now.getMinutes();
-  if (minutes < 10) {
-    minutes = "0" + minutes;
-  }
-  let currentTime = document.querySelector("#current-time");
-  currentTime.innerHTML = `${day} ${hours}:${minutes}`;
+  let day = days[dayIndex];
+
+  return `${day} ${hours}:${minutes}`;
+}
+// Feature #1
+let dateElement = document.querySelector("#date");
+let currentTime = new Date();
+dateElement.innerHTML = formatDate(currentTime);
+
+// Feature #2
+let searchForm = document.querySelector("#search-form");
+searchForm.addEventListener("submit", handleSubmit);
+
+function displayWeatherCondition(response) {
+  document.querySelector("#city").innerHTML = response.data.name;
+  document.querySelector("#temperature").innerHTML = Math.round(
+    response.data.main.temp
+  );
+
+  document.querySelector(
+    "#humidity"
+  ).innerHTML = `Humidity: ${response.data.main.humidity}%`;
+  document.querySelector("#wind").innerHTML = `Wind: ${Math.round(
+    response.data.wind.speed
+  )}`;
+
+  document.querySelector("#description").innerHTML =
+    response.data.weather[0].main;
 }
 
-function searchCity(event) {
+function searchCity() {
+  let cityInput = document.querySelector("#city-input").value;
+  let apiKey = "ed238469f9b5e9d801834270e65449bc";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&appid=${apiKey}&units=metric`;
+
+  console.log(apiUrl);
+}
+function showCity(city) {
+  let apiKey = "ed238469f9b5e9d801834270e65449bc";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayWeatherCondition);
+}
+
+function handleSubmit(event) {
   event.preventDefault();
-  let h3 = document.querySelector("h3");
-  let cityInput = document.querySelector("#city-input");
-  cityInput = cityInput.value.trim();
-  h3.innerHTML = `${cityInput}`;
+  let city = document.querySelector("#city-input").value;
+  document.querySelector("#city").innerHTML = city;
+  searchCity(city);
 }
 
-let cityForm = document.querySelector("form");
-cityForm.addEventListener("submit", searchCity);
+function searchLocation(position) {
+  let apiKey = "cabdbda40038ba7d1165b953b1c7bd6c";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
 
-function convertToFahrenheit(event) {
+  axios.get(apiUrl).then(displayWeatherCondition);
+}
+
+function getCurrentLocation(event) {
   event.preventDefault();
-
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = 66;
+  navigator.geolocation.getCurrentPosition(searchLocation);
 }
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", convertToFahrenheit);
 
-function convertToCelsius(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = 19;
-}
-let celsiuslink = document.querySelector("#celsius-link");
-celsiuslink.addEventListener("click", convertToCelsius);
-displayCurrentTime();
+let currentLocationButton = document.querySelector("#find-me");
+currentLocationButton.addEventListener("click", getCurrentLocation);
 
-let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", convertToCelsius);
+showCity("Kyiv");

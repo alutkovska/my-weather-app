@@ -1,9 +1,9 @@
-body {
+.body {
   font-family: sans-serif;
   padding: 0 10px;
-  color: blueviolet;
-  background-image: url(https://i.obozrevatel.com/2016/1/26/208216.jpg?size=1944x924);
+   background-image: url(https://i.obozrevatel.com/2016/1/26/208216.jpg?size=1944x924);
   background-size: cover;
+
 }
 
 #greeting {
@@ -14,6 +14,7 @@ body {
   line-height: 48px;
   margin-top: 60px;
   color: #f5ebeb;
+  opacity: 1;
 }
 
 #find-me {
@@ -22,8 +23,8 @@ body {
   color: #fff;
   font-size: 16px;
   margin: 0 auto;
-  line-height: 17px;
-  padding: 10px 15px;
+  line-height: 18px;
+  padding: 10px 22px;
   text-decoration: none;
   transition: all 200ms ease;
   border-width: 0px;
@@ -53,7 +54,7 @@ body {
   /* Center the content vertically */
   width: 400px;
   height: 700px;
-  border: 1px solid #fff(0, 0, 0);
+  border: 5px solid #fff(0, 0, 0);
   border-radius: 10px;
   margin: 80px 350px;
   /* Center the container in the page */
@@ -62,4 +63,21 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   box-shadow: 0px 0px 15px 5px rgb(0 0 0 / 20%);
+  opacity: 1;
+}
+.temperature {
+  color: #f5ebeb;
+  font-weight: 500;
+}
+.current-time {
+}
+
+.active {
+  color: #f5ebeb;
+  cursor: default;
+  text-decoration: none;
+}
+
+.active:hover {
+  text-decoration: none;
 }

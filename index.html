@@ -10,13 +10,12 @@
       integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
       crossorigin="anonymous"
     />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js" integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
 </head>
 
-  <body>
+  <body class="body">
   <div class="container">
     <div class="weather-app">
     <h1 id="greeting">Weather forecast from Anastasiia</h1>
@@ -56,11 +55,11 @@
         <div class="col-6">
           <h3 id="city"></h3>
     <div class ="float-left">
+      <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="description" id="icon">
       
-            <span class="temperature" id="temperature"></span
-      ><span class="current-temperature-unit">
-        <a href="#" id="celsius-link">°C</a> |
-        <a href="#" id="fahrenheit-link">°F</a>   
+            <span class="temperature" id="temperature"></span>
+            <a href="#" id="celsius-link" class="active">°C</a> |
+           <a href="#" id="fahrenheit-link">°F</a>   
     
     <p class="current-time" id="date">Saturday 07:30</p>
     <div class="float-left">
@@ -69,11 +68,11 @@
         <ul class="weather-elements">
           <li id="description">Sunny </li>
           <li id="humidity">Humidity: </li>
-          <li id="wind">Wind:  km/h </li>
+          <li id="wind">Wind:  m/h </li>
         
       </ul>
-
-    <span class="week-days" >
+           
+    <div class="week-days" >
     <div class="row">
         <div class="col-2">
             <li class="days">
@@ -113,10 +112,12 @@
           </div>
     </div>
  
-    </span>
-        <div>
-          <a id="source" href="https://github.com/alutkovska/my-weather-app.git">Open-source code</a>
-        by Anastasiia Lutkovska-Babych</div>
+    </div>
     <script src="script.js"></script>
+  
+        <footer>
+          <a id="source" href="https://github.com/alutkovska/my-weather-app.git">Open-source code</a>
+        by Anastasiia Lutkovska-Babych</footer>
+    
   </body>
 </html>

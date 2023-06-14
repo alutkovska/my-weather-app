@@ -17,14 +17,12 @@
 </head>
 
   <body>
-
+  <div class="container">
+    <div class="weather-app">
     <h1 id="greeting">Weather forecast from Anastasiia</h1>
-    <h2 id="second">Good weather only 😍</h2>
-       <div class="container">
-      <div class="weather-app">
-        <form class="search-form" id="search-form">
+                   <form class="search-form" id="search-form">
           <div class="row">
-            <div class="col-9">
+            <div class="col-5">
               <input
                 type="search"
                 placeholder="Type a city.."
@@ -40,10 +38,17 @@
                 value="Search"
                 class="form-control btn btn-primary shadow-sm"
               />
-            </div>
+            </div> 
+              <div class="col-3">
+                <button id = "find-me">My location</button>
+              </div>
+             
+            
+            
           </div>
+          
         </form>
-        <button id = "find-me">Show my location</button><br/>
+        
 <p id = "status"></p>
 <a id = "map-link" target="_blank"></a>
         <div class="selected-city">
@@ -68,7 +73,7 @@
         
       </ul>
 
-    <div class="week-days" >
+    <span class="week-days" >
     <div class="row">
         <div class="col-2">
             <li class="days">
@@ -108,7 +113,7 @@
           </div>
     </div>
  
-</div>
+    </span>
         <div>
           <a id="source" href="https://github.com/alutkovska/my-weather-app.git">Open-source code</a>
         by Anastasiia Lutkovska-Babych</div>

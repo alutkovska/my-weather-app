@@ -1,9 +1,8 @@
 .body {
   font-family: sans-serif;
   padding: 0 10px;
-   background-image: url(https://i.obozrevatel.com/2016/1/26/208216.jpg?size=1944x924);
+  background-image: url(https://i.obozrevatel.com/2016/1/26/208216.jpg?size=1944x924);
   background-size: cover;
-
 }
 
 #greeting {
@@ -70,6 +69,8 @@
   font-weight: 500;
 }
 .current-time {
+  color: #f5ebeb;
+  font-size: 16px;
 }
 
 .active {
@@ -80,4 +81,22 @@
 
 .active:hover {
   text-decoration: none;
+}
+
+.days {
+  color: #f5ebeb;
+  font-size: 16px;
+}
+.temperature-max {
+  color: #f5ebeb;
+  font-size: 16px;
+}
+.temperature-min {
+  color: #f5ebeb;
+  font-size: 16px;
+  opacity: 0.5;
+}
+.weather-elements {
+  color: #f5ebeb;
+  font-size: 18px;
 }
